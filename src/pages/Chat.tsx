@@ -1,10 +1,11 @@
 import { useState, useContext } from 'react';
 import { AuthContext } from '../contexts/authContext';
 import { useNavigate } from 'react-router-dom';
+import { useChat } from '../hooks/useChat';
 
 const Chat = () => {
   const { isAuthenticated } = useContext(AuthContext);
-  const [messages, setMessages] = useState<any[]>([]);
+  const { messages, sendMessage, loading, error } = useChat();
   const [input, setInput] = useState('');
   const navigate = useNavigate();
 
@@ -19,12 +20,9 @@ const Chat = () => {
     );
   }
 
-  const sendMessage = () => {
+  const handleSend = () => {
     if (!input) return;
-    setMessages([...messages, { user: true, text: input }]);
-    setTimeout(() => {
-      setMessages(msgs => [...msgs, { user: false, text: 'AI: This is a mock response about tours.' }]);
-    }, 500);
+    sendMessage(input);
     setInput('');
   };
   return (
@@ -32,10 +30,12 @@ const Chat = () => {
       <h2 className="text-2xl font-bold mb-4">Chat with AI Assistant</h2>
       <div className="border rounded p-4 mb-4 h-64 overflow-y-auto bg-gray-50">
         {messages.map((msg, i) => (
-          <div key={i} className={msg.user ? 'text-right' : 'text-left'}>
-            <span className={msg.user ? 'text-blue-600' : 'text-gray-700'}>{msg.text}</span>
+          <div key={i} className={msg.role === 'user' ? 'text-right' : 'text-left'}>
+            <span className={msg.role === 'user' ? 'text-blue-600' : 'text-gray-700'}>{msg.text}</span>
           </div>
         ))}
+        {loading && <div className="text-gray-400 text-sm">Bot is typing...</div>}
+        {error && <div className="text-red-500 text-sm">{error}</div>}
       </div>
       <div className="flex gap-2">
         <input
@@ -46,11 +46,11 @@ const Chat = () => {
           onKeyDown={e => {
             if (e.key === 'Enter') {
               e.preventDefault();
-              sendMessage();
+              handleSend();
             }
           }}
         />
-        <button className="bg-blue-600 text-white px-4 py-1 rounded" onClick={sendMessage}>Send</button>
+        <button className="bg-blue-600 text-white px-4 py-1 rounded" onClick={handleSend} disabled={loading}>Send</button>
       </div>
     </div>
   );

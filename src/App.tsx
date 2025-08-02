@@ -13,7 +13,7 @@ function App() {
           <span className="font-extrabold text-7xl tracking-wide text-center">Dive Tours Chat</span>
         </div>
       </header>
-      <main className="pt-12 min-h-[calc(100vh-5rem)] w-full flex justify-center items-center bg-gradient-to-br from-blue-50 to-purple-100">
+      <main className="pt-12 w-full flex justify-center items-center bg-gradient-to-br from-blue-50 to-purple-100">
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/register" element={<Register />} />

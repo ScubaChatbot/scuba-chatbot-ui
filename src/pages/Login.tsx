@@ -24,7 +24,7 @@ const Login = () => {
   }, [isAuthenticated, navigate]);
 
   return (
-    <div className="flex items-center justify-center min-h-screen w-full bg-gradient-to-br from-blue-100 via-pink-100 to-yellow-100">
+    <div className="flex items-center justify-center w-full bg-gradient-to-br from-blue-100 via-pink-100 to-yellow-1000" style={{ marginTop: '15%' }}>
       <div className="bg-white rounded-2xl shadow-2xl p-10 w-full max-w-[50vw] mx-auto flex flex-col gap-8">
         <h2 className="text-3xl font-bold mb-8 text-blue-700 text-center">Login</h2>
         <form onSubmit={handleLogin} className="flex flex-col gap-6">
