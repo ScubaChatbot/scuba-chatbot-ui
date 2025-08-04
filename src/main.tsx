@@ -4,6 +4,8 @@ import './index.css'
 import App from './App.tsx'
 import { AuthContext } from './contexts/authContext'
 import { useAuth } from './hooks/useAuth'
+import { ToastProvider } from './contexts/toastContext'
+
 
 function Root() {
   const auth = useAuth();
@@ -14,8 +16,11 @@ function Root() {
   );
 }
 
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <Root />
+    <ToastProvider>
+      <Root />
+    </ToastProvider>
   </StrictMode>,
 )

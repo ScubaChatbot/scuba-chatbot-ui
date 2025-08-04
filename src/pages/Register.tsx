@@ -1,10 +1,14 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+
+import { AuthContext } from '../contexts/authContext';
 
 const Register = () => {
   const [form, setForm] = useState({ username: '', password: '' });
   const [error, setError] = useState('');
   const navigate = useNavigate();
+
+  const { register } = useContext(AuthContext);
 
   const handleRegister = (e: React.FormEvent) => {
     e.preventDefault();
@@ -12,14 +16,18 @@ const Register = () => {
       setError('Please enter username and password');
       return;
     }
-    // Mock register
-    setTimeout(() => {
-      navigate('/');
-    }, 500);
+    const result = register(form.username, form.password);
+    if (result && typeof result.then === 'function') {
+      result.then((res: any) => {
+        if (res && res.ok) {
+          navigate('/');
+        }
+      });
+    }
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-[50vw] mx-auto">
+    <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-[50vw] mx-auto" style={{ marginTop: '15%' }}>
       <h2 className="text-2xl font-bold mb-6 text-purple-700">Register</h2>
       <form onSubmit={handleRegister} className="flex flex-col gap-4">
         <label className="text-sm font-medium text-purple-700" htmlFor="register-username">Username</label>
