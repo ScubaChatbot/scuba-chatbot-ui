@@ -24,21 +24,39 @@ const Login = () => {
   }, [isAuthenticated, navigate]);
 
   return (
-    <div className="flex items-center justify-center w-full bg-gradient-to-br from-blue-100 via-pink-100 to-yellow-1000" style={{ marginTop: '15%' }}>
-      <div className="bg-white rounded-2xl shadow-2xl p-10 w-full max-w-[50vw] mx-auto flex flex-col gap-8">
-        <h2 className="text-3xl font-bold mb-8 text-blue-700 text-center">Login</h2>
-        <form onSubmit={handleLogin} className="flex flex-col gap-6">
-          <label className="text-sm font-medium text-blue-700" htmlFor="login-username">Username</label>
-          <input id="login-username" type="text" placeholder="Username" className="border rounded-2xl px-4 py-5 shadow-md focus:shadow-lg transition" value={form.username} onChange={e => setForm(f => ({ ...f, username: e.target.value }))} required />
-          <label className="text-sm font-medium text-blue-700" htmlFor="login-password">Password</label>
-          <input id="login-password" type="password" placeholder="Password" className="border rounded-2xl px-4 py-5 shadow-md focus:shadow-lg transition" value={form.password} onChange={e => setForm(f => ({ ...f, password: e.target.value }))} required />
-          {error && <span className="text-red-500 text-sm mt-2">{error}</span>}
-          <button type="submit" className="bg-blue-700 text-white px-6 py-3 rounded font-semibold hover:bg-blue-800 transition mt-2">Login</button>
-      </form>
-        <div className="mt-6 text-center">
-          <span>Don't have an account? </span>
-          <button className="text-blue-700 underline font-semibold" onClick={() => navigate('/register')}>Register</button>
+    <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-[50vw] mx-auto h-full flex flex-col justify-center">
+      <h2 className="text-2xl font-bold mb-6 text-orange-500">Login</h2>
+      <form onSubmit={handleLogin} className="flex flex-col gap-4">
+        <div className="relative mb-4">
+          <input
+            id="login-username"
+            type="text"
+            className={`peer border border-orange-300 focus:border-2 focus:border-orange-500 rounded-2xl px-4 h-12 shadow-md focus:shadow-lg transition w-full placeholder-transparent`}
+            placeholder="Username"
+            value={form.username}
+            onChange={e => setForm(f => ({ ...f, username: e.target.value }))}
+            required
+          />
+          <label htmlFor="login-username" className="absolute left-3 -top-2 text-purple-700 text-xs font-medium transition-all bg-white px-1 pointer-events-none peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-2 peer-focus:text-xs peer-focus:text-purple-700">Username</label>
         </div>
+        <div className="relative mb-4">
+          <input
+            id="login-password"
+            type="password"
+            className={`peer border border-orange-300 focus:border-2 focus:border-orange-500 rounded-2xl px-4 h-12 shadow-md focus:shadow-lg transition w-full placeholder-transparent`}
+            placeholder="Password"
+            value={form.password}
+            onChange={e => setForm(f => ({ ...f, password: e.target.value }))}
+            required
+          />
+          <label htmlFor="login-password" className="absolute left-3 -top-2 text-purple-700 text-xs font-medium transition-all bg-white px-1 pointer-events-none peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-2 peer-focus:text-xs peer-focus:text-purple-700">Password</label>
+        </div>
+        {error && <span className="text-red-500 text-sm">{error}</span>}
+        <button type="submit" className="bg-orange-400 text-white px-4 py-2 rounded font-semibold hover:bg-orange-500 transition cursor-pointer">Login</button>
+      </form>
+      <div className="mt-4 text-center">
+        <span>Don't have an account? </span>
+        <button className="text-orange-500 underline cursor-pointer" onClick={() => navigate('/register')}>Register</button>
       </div>
     </div>
   );

@@ -27,19 +27,39 @@ const Register = () => {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-[50vw] mx-auto" style={{ marginTop: '15%' }}>
-      <h2 className="text-2xl font-bold mb-6 text-purple-700">Register</h2>
+    <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-[50vw] mx-auto h-full flex flex-col justify-center">
+      <h2 className="text-2xl font-bold mb-6 text-orange-500">Register</h2>
       <form onSubmit={handleRegister} className="flex flex-col gap-4">
-        <label className="text-sm font-medium text-purple-700" htmlFor="register-username">Username</label>
-        <input id="register-username" type="text" placeholder="Username" className="border rounded-2xl px-4 py-5 shadow-md focus:shadow-lg transition" value={form.username} onChange={e => setForm(f => ({ ...f, username: e.target.value }))} required />
-        <label className="text-sm font-medium text-purple-700" htmlFor="register-password">Password</label>
-        <input id="register-password" type="password" placeholder="Password" className="border rounded-2xl px-4 py-5 shadow-md focus:shadow-lg transition" value={form.password} onChange={e => setForm(f => ({ ...f, password: e.target.value }))} required />
+        <div className="relative mb-4">
+          <input
+            id="register-username"
+            type="text"
+            className={`peer border border-orange-300 focus:border-2 focus:border-orange-500 rounded-2xl px-4 h-12 shadow-md focus:shadow-lg transition w-full placeholder-transparent`}
+            placeholder="Username"
+            value={form.username}
+            onChange={e => setForm(f => ({ ...f, username: e.target.value }))}
+            required
+          />
+          <label htmlFor="register-username" className="absolute left-3 -top-2 text-purple-700 text-xs font-medium transition-all bg-white px-1 pointer-events-none peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-2 peer-focus:text-xs peer-focus:text-purple-700">Username</label>
+        </div>
+        <div className="relative mb-4">
+          <input
+            id="register-password"
+            type="password"
+            className={`peer border border-orange-300 focus:border-2 focus:border-orange-500 rounded-2xl px-4 h-12 shadow-md focus:shadow-lg transition w-full placeholder-transparent`}
+            placeholder="Password"
+            value={form.password}
+            onChange={e => setForm(f => ({ ...f, password: e.target.value }))}
+            required
+          />
+          <label htmlFor="register-password" className="absolute left-3 -top-2 text-purple-700 text-xs font-medium transition-all bg-white px-1 pointer-events-none peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-2 peer-focus:text-xs peer-focus:text-purple-700">Password</label>
+        </div>
         {error && <span className="text-red-500 text-sm">{error}</span>}
-        <button type="submit" className="bg-purple-700 text-white px-4 py-2 rounded font-semibold hover:bg-purple-800 transition">Register</button>
+        <button type="submit" className="bg-orange-400 text-white px-4 py-2 rounded font-semibold hover:bg-orange-500 transition">Register</button>
       </form>
       <div className="mt-4 text-center">
         <span>Already have an account? </span>
-        <button className="text-purple-700 underline" onClick={() => navigate('/')}>Login</button>
+        <button className="text-orange-500 underline" onClick={() => navigate('/')}>Login</button>
       </div>
     </div>
   );
