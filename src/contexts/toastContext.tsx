@@ -38,19 +38,34 @@ export function ToastProvider({ children }: { children: ReactNode }) {
   return (
     <ToastContext.Provider value={{ toasts, showToast, removeToast }}>
       {children}
-      <div className="fixed top-4 right-4 z-50 flex flex-col gap-2">
+      <div className="fixed bottom-4 left-4 z-50 flex flex-col gap-2">
         {toasts.map((toast) => (
           <div
             key={toast.id}
             className={
               toast.type === 'error'
-                ? 'bg-red-500 text-white p-4 rounded shadow'
+                ? 'bg-red-100 text-red-700 p-4 rounded shadow flex items-center gap-2'
                 : toast.type === 'success'
-                ? 'bg-green-500 text-white p-4 rounded shadow'
-                : 'bg-blue-500 text-white p-4 rounded shadow'
+                ? 'bg-green-100 text-green-700 p-4 rounded shadow flex items-center gap-2'
+                : 'bg-blue-100 text-blue-700 p-4 rounded shadow flex items-center gap-2'
             }
           >
-            {toast.message}
+            {toast.type === 'error' && (
+              <span className="text-red-400">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+              </span>
+            )}
+            {toast.type === 'success' && (
+              <span className="text-green-400">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+              </span>
+            )}
+            {toast.type === 'info' && (
+              <span className="text-blue-400">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01" /></svg>
+              </span>
+            )}
+            <span>{toast.message}</span>
           </div>
         ))}
       </div>
