@@ -20,8 +20,8 @@ const Chat = () => {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen w-full" style={{ background: 'linear-gradient(135deg, #fff7e6 0%, #ffeaf4 50%, #e6f7ff 100%)' }}>
         <div className="rounded-2xl shadow-2xl p-10 max-w-md mx-auto flex flex-col gap-6" style={{ background: 'linear-gradient(135deg, #ffe5b4 0%, #ffd6e0 50%, #c2e9fb 100%)' }}>
-          <h2 className="text-2xl font-bold text-orange-700 text-center">Please login</h2>
-          <button className="bg-orange-400 text-white px-6 py-3 rounded font-semibold hover:bg-orange-500 transition cursor-pointer" onClick={() => navigate('/')}>Go to Login</button>
+          <h2 className="text-2xl font-bold text-orange-700 text-center">Por favor, inicie sesión</h2>
+          <button className="bg-orange-400 text-white px-6 py-3 rounded font-semibold hover:bg-orange-500 transition cursor-pointer" onClick={() => navigate('/')}>Ir a iniciar sesión</button>
         </div>
       </div>
     );
@@ -34,14 +34,14 @@ const Chat = () => {
   };
   return (
     <div className="p-8 w-[70%] mx-auto flex flex-col h-[calc(100vh-7rem)]">
-      <h2 className="text-2xl font-bold mb-4 text-orange-500">Chat with AI Assistant</h2>
+      <h2 className="text-2xl font-bold mb-4 text-orange-500">Asistente de IA sobre buceo</h2>
       <div className="flex-1 rounded p-4 mb-4 overflow-y-auto" style={{ background: 'linear-gradient(135deg, #fff7e6 0%, #ffeaf4 50%, #e6f7ff 100%)' }}>
         {messages.map((msg, i) => (
           <div key={i} className={msg.role === 'user' ? 'text-right' : 'text-left'}>
             <span className={msg.role === 'user' ? 'text-blue-600' : 'text-gray-700'}>{msg.text}</span>
           </div>
         ))}
-        {loading && <div className="text-gray-400 text-sm">Bot is typing...</div>}
+        {loading && <div className="text-gray-400 text-sm">El bot está escribiendo...</div>}
         {error && <div className="text-red-500 text-sm">{error}</div>}
         <div ref={messagesEndRef} />
       </div>
@@ -51,7 +51,7 @@ const Chat = () => {
             className="peer border border-orange-300 focus:border-2 focus:border-orange-500 rounded-lg px-2 h-12 w-full shadow-md focus:shadow-lg transition placeholder-transparent"
             value={input}
             onChange={e => setInput(e.target.value)}
-            placeholder="Ask about tours..."
+            placeholder="Pregunta lo que quieras..."
             onKeyDown={e => {
               if (e.key === 'Enter') {
                 e.preventDefault();
@@ -59,9 +59,9 @@ const Chat = () => {
               }
             }}
           />
-          <label htmlFor="chat-input" className="absolute left-2 -top-2 text-blue-600 text-xs font-medium transition-all bg-white px-1 pointer-events-none peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-2 peer-focus:text-xs peer-focus:text-blue-600">Ask about tours...</label>
+          <label htmlFor="chat-input" className="absolute left-2 -top-2 text-blue-600 text-xs font-medium transition-all bg-white px-1 pointer-events-none peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-2 peer-focus:text-xs peer-focus:text-blue-600">Pregunta lo que quieras...</label>
         </div>
-        <button className="bg-orange-400 text-white px-4 py-1 rounded font-semibold hover:bg-orange-500 transition cursor-pointer" onClick={handleSend} disabled={loading}>Send</button>
+        <button className="bg-orange-400 text-white px-4 py-1 rounded font-semibold hover:bg-orange-500 transition cursor-pointer" onClick={handleSend} disabled={loading}>Enviar</button>
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 
-# Dive Tours Chat SPA
+# Scuba Chatbot SPA
 
 A modern React single-page application for a diving tours business, built with Vite, TypeScript, and Tailwind CSS.
 
