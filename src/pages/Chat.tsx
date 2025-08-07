@@ -1,4 +1,5 @@
 import { useState, useContext, useRef, useEffect } from 'react';
+import ReactMarkdown from 'react-markdown';
 import { AuthContext } from '../contexts/authContext';
 import { useNavigate } from 'react-router-dom';
 import { useChat } from '../hooks/useChat';
@@ -38,7 +39,13 @@ const Chat = () => {
       <div className="flex-1 rounded p-4 mb-4 overflow-y-auto" style={{ background: 'linear-gradient(135deg, #fff7e6 0%, #ffeaf4 50%, #e6f7ff 100%)' }}>
         {messages.map((msg, i) => (
           <div key={i} className={msg.role === 'user' ? 'text-right' : 'text-left'}>
-            <span className={msg.role === 'user' ? 'text-blue-600' : 'text-gray-700'}>{msg.text}</span>
+            {msg.role === 'user' ? (
+              <span className="text-blue-600">{msg.text}</span>
+            ) : (
+              <div className="text-gray-700">
+                <ReactMarkdown>{msg.text}</ReactMarkdown>
+              </div>
+            )}
           </div>
         ))}
         {loading && <div className="text-gray-400 text-sm">El bot está escribiendo...</div>}
