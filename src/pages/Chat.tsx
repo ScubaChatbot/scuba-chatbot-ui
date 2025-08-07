@@ -19,7 +19,7 @@ const Chat = () => {
 
   if (!isAuthenticated) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-screen w-full" style={{ background: 'linear-gradient(135deg, #fff7e6 0%, #ffeaf4 50%, #e6f7ff 100%)' }}>
+      <div className="min-h-[calc(100vh-5rem)] flex flex-col items-center justify-center w-full" style={{ background: 'linear-gradient(135deg, #fff7e6 0%, #ffeaf4 50%, #e6f7ff 100%)' }}>
         <div className="rounded-2xl shadow-2xl p-10 max-w-md mx-auto flex flex-col gap-6" style={{ background: 'linear-gradient(135deg, #ffe5b4 0%, #ffd6e0 50%, #c2e9fb 100%)' }}>
           <h2 className="text-2xl font-bold text-orange-700 text-center">Por favor, inicie sesión</h2>
           <button className="bg-orange-400 text-white px-6 py-3 rounded font-semibold hover:bg-orange-500 transition cursor-pointer" onClick={() => navigate('/')}>Ir a iniciar sesión</button>
@@ -34,9 +34,9 @@ const Chat = () => {
     setInput('');
   };
   return (
-    <div className="min-h-screen w-full flex flex-col items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
+    <div className="min-h-[calc(100vh-5rem)] w-full flex flex-col items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
       {/* Chat container */}
-      <div className="flex flex-col w-full max-w-2xl flex-1 bg-white rounded-3xl shadow-2xl px-6 py-4 mb-6" style={{ minHeight: "60vh" }}>
+      <div className="flex flex-col justify-between w-full max-w-2xl flex-1 bg-white rounded-3xl shadow-2xl px-6 py-4 mb-6 mt-6" style={{ minHeight: "60vh" }}>
         <div className="flex-1 overflow-y-auto space-y-4 pb-2" style={{ maxHeight: "60vh" }}>
           {messages.map((msg, i) => (
             <div
@@ -86,7 +86,7 @@ const Chat = () => {
               value={input}
               onChange={e => setInput(e.target.value)}
               placeholder="Escribe tu mensaje..."
-              autoComplete="off"
+              autoComplete="new-password"
               id="chat-input"
               onKeyDown={e => {
                 if (e.key === 'Enter' && !e.shiftKey) {

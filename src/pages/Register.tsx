@@ -27,7 +27,7 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen w-full flex flex-col items-center justify-start bg-gradient-to-br from-blue-200 to-blue-400">
+    <div className="min-h-[calc(100vh-5rem)] w-full flex flex-col items-center justify-center bg-gradient-to-br from-blue-200 to-blue-400">
 
       {/* Form container */}
       <form onSubmit={handleRegister} className="bg-white rounded-3xl shadow-xl p-8 w-full max-w-md flex flex-col gap-6 mt-6">
