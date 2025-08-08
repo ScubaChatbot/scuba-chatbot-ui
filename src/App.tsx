@@ -12,11 +12,8 @@ function App() {
           <path fill="#3B82F6" fillOpacity="0.3" d="M0,64L48,80C96,96,192,128,288,138.7C384,149,480,139,576,128C672,117,768,107,864,117.3C960,128,1056,160,1152,165.3C1248,171,1344,149,1392,138.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"/>
         </svg>
         <div className="bg-blue-700 rounded-full p-3 flex items-center justify-center shadow-md z-10 mr-4">
-          {/* Diving mask icon SVG */}
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="z-10">
-            <path d="M2 12h20M12 2v20M7 7h10v10H7z" />
-            <circle cx="12" cy="12" r="3" />
-          </svg>
+          {/* Diving mask icon from public/scubaIcon.svg */}
+          <img src="/scubaIcon.svg" alt="Scuba Icon" width={36} height={36} className="z-10" />
         </div>
         <span className="font-semibold text-2xl tracking-wide z-10">Scuba Chatbot</span>
       </header>
